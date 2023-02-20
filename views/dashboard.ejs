@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    
+    <title>Document</title>
+</head>
+<style>
+.link:hover {
+  background: #cccccc;
+  color: black;
+}
+.link:focus {
+  background: #3371ff;
+  color: white;
+}
+
+</style>
+<body >
+    <div style="background-color: rgb(15, 101, 230); height: 110px">
+      <div style="padding: 2px ;" class="d-flex flex-column align-items-center">
+        <p style="color: white; font-weight: lighter;">Welcome</p>
+        <h2 id="username" style="color: white; font-weight:400; text-transform: capitalize; margin-top: 0;"></h3>
+        <p id="userID" style="color: white; font-weight: lighter; letter-spacing: .2vh;"></p>
+      </div>
+       <a href="/logout" style="display: block;  position: absolute; left: 90%; top: 5%; width: 100px; color: white;">Logout</a>
+    </div>
+
+<div id="wrapper" class="d-flex">
+    <div class=" flex-column align-items-center justify-content-center p-2">
+        <div id="sidebar" style="border: 1px solid rgb(182, 175, 175); width:450px; border-radius:10px"  >
+            <h2 style="margin: 5px">Conversation History</h2>
+            <div id="sidebar-list-wrapper" style="height:72vh" class="m-2">
+                <ul style="list-style-type: none; height:60vh; " class="list-group" id="list-group">
+
+                </ul>
+                <div style="margin: 25px; text-align:center">
+                  <h2 id="recipient-Name" name="recipient-ID" style="font-size: 25px;"></h3>
+                  <h3 id="recipient-ID" name="recipient-ID" style="font-size: 15px;"></h3>                 
+                </div>
+            </div>
+            <button type="button" id="openModal" style="height:50px" class="btn btn-primary mt-1 w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add Contact</button>
+            <!-- MODAL -->
+            <div id="myModal" class="modal" style="background-color: rgba(8, 7, 7, 0.527); position: absolute;">
+                <!-- Modal content -->
+                <div class="modal-content w-50 p-5" style="left: 25%; top: 10%; position: absolute; opacity: 1; background-color: rgb(255, 255, 255);">
+                <h2>Enter Contact Name</h2>
+                <input type="text" class="form-control" name="addcontactInput" id="addcontactInput" style="margin-top: 50px;"></input>
+                <button type="submit" class="btn btn-primary" id="add-contactbtn" style="margin-top: 50px;">Add</button>
+                
+                </div>    
+                <button class="btn btn-secondary close" style="margin-top: 50px;">Close</button>  
+            </div>
+
+        </div>
+    </div>
+    <!-- MESSAGE BOX -->
+    <div id="message-panel" style="width: 67%;" class="d-flex flex-column">
+        <div id="messagewrapper" style="max-width: 100%; height:73vh; border:1px solid rgb(133, 123, 123); border-radius:10px; overflow:auto; word-wrap:break-word" class="mt-2 p-3">
+          
+        </div>
+        <div id="message-composer" class="input-group mb-2 mt-1" style="height:100px;">
+            <input id="messagebody" type="text" class="form-control" placeholder="Enter text" >
+            <button class="btn btn-outline-primary" type="button" id="send-btn" style="width:140px">Send</button>
+        </div>
+    </div>
+</div>
+<script src='http://localhost:3000/socket.io/socket.io.js'></script>
+
+<script type="text/javascript" src="script.js" ></script>
+
+</body>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("openModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 
+// var userCookie = document.getElementById("username")
+// window.localStorage.setItem("token",JSON.stringify(my_token)); 
+</script>
+</html>
