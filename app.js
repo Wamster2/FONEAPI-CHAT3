@@ -7,6 +7,7 @@ const Usermodel = require("./models/User")
 const localStorage = require("node-localstorage")
 const AuthRoute = require("./routes/auth")
 const path = require('path');
+const PORT = process.env.PORT || 3000;
 
 //SOCKET.IO
 const http = require('http');
@@ -114,8 +115,8 @@ io.on('connection',(socket) => {
     })
   });
 
-server.listen(3000, () => {
-console.log('listening on *:3000');
+server.listen(PORT, () => {
+console.log('listening on PORT ${PORT}');
 });
 
 async function connect() {
