@@ -74,13 +74,13 @@ io.on('connection',(socket) => {
         recipientID: data.recieverid
       })
       MSG.save()  
-      io.sockets.to(recipientSocketID).emit( 'send-message', {Sendername:Sendername,recieverName:data.recieverName,recieverid:data.recieverid,getrecipientid:getrecipientid,recipientSocketID: recipientSocketID,username: data.username, messageBody: data.messageBody, clientID: socket.id,selectedContact:data.selectedContact})
+      io.to(recipientSocketID).emit( 'send-message', {Sendername:Sendername,recieverName:data.recieverName,recieverid:data.recieverid,getrecipientid:getrecipientid,recipientSocketID: recipientSocketID,username: data.username, messageBody: data.messageBody, clientID: socket.id,selectedContact:data.selectedContact})
       socket.emit( 'send-message', {Sendername:Sendername.toString(),recieverName:data.recieverName,recieverid:data.recieverid,getrecipientid:getrecipientid,recipientSocketID: recipientSocketID,username: data.username, messageBody: data.messageBody, clientID: socket.id,selectedContact:data.selectedContact});
     })
 
     //EMITTING FRIENDLIST
     socket.on("add-contact",async (data) => {
-      var friendlist = []
+      var friendlist = [] 
       var result = await User.findOne({name: data.contact})
         if(result){
           var match = await User.findOne({name:data.username,contacts: {$in: data.contact}})         

@@ -24,11 +24,11 @@
 
 </style>
 <body >
-    <div style="background-color: rgb(15, 101, 230); height: 110px">
-      <div style="padding: 2px ;" class="d-flex flex-column align-items-center">
+    <div style="background-color: rgb(15, 101, 230); height: 90px">
+      <div class="d-flex flex-column align-items-center p-3">
         <p style="color: white; font-weight: lighter;">Welcome</p>
-        <h2 id="username" style="color: white; font-weight:400; text-transform: capitalize; margin-top: 0;"></h3>
-        <p id="userID" style="color: white; font-weight: lighter; letter-spacing: .2vh;"></p>
+        <h3 id="username" style="color: white; font-weight:400; text-transform: capitalize; margin-top: 0;"></h3>
+        <p id="userID" style="color: white; font-weight: lighter; letter-spacing: .2vh; "></p>
       </div>
        <a href="/logout" style="display: block;  position: absolute; left: 90%; top: 5%; width: 100px; color: white;">Logout</a>
     </div>
@@ -36,14 +36,14 @@
 <div id="wrapper" class="d-flex">
     <div class=" flex-column align-items-center justify-content-center p-2">
         <div id="sidebar" style="border: 1px solid rgb(182, 175, 175); width:450px; border-radius:10px"  >
-            <h2 style="margin: 5px">Conversation History</h2>
-            <div id="sidebar-list-wrapper" style="height:72vh" class="m-2">
+            <h2 style="margin: 10px;" class="mb-5">Conversation History</h2>
+            <div id="sidebar-list-wrapper" style="height:66vh" class="m-2">
                 <ul style="list-style-type: none; height:60vh; " class="list-group" id="list-group">
 
                 </ul>
-                <div style="margin: 25px; text-align:center">
+                <div style=" text-align:center">
                   <h2 id="recipient-Name" name="recipient-ID" style="font-size: 25px;"></h3>
-                  <h3 id="recipient-ID" name="recipient-ID" style="font-size: 15px;"></h3>                 
+                  <h3 id="recipient-ID" name="recipient-ID" style="font-size: 15px; color:#454444"></h3>                 
                 </div>
             </div>
             <button type="button" id="openModal" style="height:50px" class="btn btn-primary mt-1 w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add Contact</button>

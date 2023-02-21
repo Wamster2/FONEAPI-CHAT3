@@ -44,7 +44,7 @@ socket.on("joined-user", (data) => {
         notif.style.fontWeight = "bold"
         li.style.height = "50px"
         li.style.padding = "5px"
-        li.style.borderBottom = "2px solid #575757"
+        li.style.borderBottom = "1px solid #575757"
         li.style.display = "block"
         li.style.listStyle = "none"
         li.classList.add("link")
@@ -152,7 +152,7 @@ sendMessage.addEventListener("click",() => {
 })
 //Displaying the message sent from user
 socket.on('send-message', async (data) => {
-    messageBox.scrollTop = messageBox.scrollHeight
+    messageBox.scrollTop = (messageBox.scrollHeight + 100)
     var sender_name = data.Sendername.toString()
     console.log(selectedContact)
     clientID = socket.id
@@ -160,15 +160,24 @@ socket.on('send-message', async (data) => {
     //     console.log("Not match")
     // }else{
         if (clientID === data.clientID) {
-            const  wrapper = document.createElement("div")
             const messageLog = document.createElement('div')
-            const  details = document.createElement("div")
-            const time = new Date();
-            const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
-        
+            // const  wrapper = document.createElement("div")
+            // const  details = document.createElement("p")
+            // const time = new Date();
+            // const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
+            // wrapper.style.maxWidth = "50%"
+            // wrapper.style.padding = "10px"
+            // wrapper.style.margin = "10px"
+            // wrapper.style.marginLeft = "auto"
+            
+            // details.innerText = "You sent at " + formattedTime
+            // details.style.marginLeft = "auto"
+            // details.style.fontSize = "11px"
+            // details.style.maxWidth = "100px"
+            // details.style.color = "#575757"
+            
             messageLog.style.borderRadius = "5px"
             messageLog.style.padding = "10px"
-            messageLog.style.margin = "10px"
             messageLog.style.width = "max-content"
             messageLog.style.background = "#e3e3e3"
             messageLog.style.color = "black "
@@ -177,15 +186,30 @@ socket.on('send-message', async (data) => {
             messageLog.style.overflowWrap = "anywhere"
             messageLog.style.maxWidth = "50%"
             messageLog.innerText = data.messageBody
+            // wrapper.append(messageLog,details)
+            // messageBox.append(wrapper)
             messageBox.append(messageLog)
         }else{
+            // const  wrapper = document.createElement("div")
             const messageLog = document.createElement('div')
-            const time = new Date();
-            const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
+            // const  details = document.createElement("p")
+            // const time = new Date();
+            // const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
+
+            // wrapper.style.maxWidth = "50%"
+            // wrapper.style.padding = "10px"
+            // wrapper.style.margin = "10px"
+            // wrapper.style.marginLeft = "auto"
+
+            // details.innerText = data.recieverName +  " sent at " + formattedTime
+            // details.style.marginLeft = "auto"
+            // details.style.fontSize = "11px"
+            // details.style.maxWidth = "150px"
+            // details.style.color = "#575757"
 
             messageLog.style.borderRadius = "5px"
             messageLog.style.padding = "10px"
-            messageLog.style.margin = "10px"
+            // messageLog.style.margin = "10px"
             messageLog.style.width = "max-content"
             messageLog.style.background = "#0c6be8"
             messageLog.style.color = "white"
@@ -193,6 +217,8 @@ socket.on('send-message', async (data) => {
             messageLog.style.maxWidth = "50%"
         
             messageLog.innerText = data.messageBody
+            // wrapper.append(messageLog,details)
+            // messageBox.append(wrapper)
             messageBox.append(messageLog)
         }
     // }
