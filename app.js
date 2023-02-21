@@ -20,7 +20,8 @@ const { all } = require("./routes/auth");
 const { ALL } = require("dns");
 const { name } = require("ejs");
 const io = new Server(server,{
-  cors: {origin:"http://localhost:3000"}
+  cors: {origin:"http://localhost:3000"},
+  allowEIO3: true
 });
 global.io = io
 
